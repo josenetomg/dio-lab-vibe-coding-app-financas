@@ -1,0 +1,313 @@
+Perfeito. Agora vamos direto ao que interessa: **pack completo pronto pra você subir e rodar** (sem teoria desnecessária).
+
+Vou te entregar em 4 blocos executáveis:
+
+---
+
+# 🚀 1. SQL COMPLETO — SUPABASE
+
+```sql
+-- USERS (já existe via auth, mas útil para extensão)
+create table public.users (
+  id uuid primary key default gen_random_uuid(),
+  email text,
+  created_at timestamp default now()
+);
+
+-- TRANSAÇÕES
+create table public.transactions (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references auth.users(id),
+  amount numeric,
+  category text,
+  description text,
+  date date default now(),
+  created_at timestamp default now()
+);
+
+-- METAS
+create table public.goals (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references auth.users(id),
+  title text,
+  target_amount numeric,
+  current_amount numeric default 0,
+  deadline date,
+  created_at timestamp default now()
+);
+
+-- MENSAGENS (chat)
+create table public.messages (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid,
+  message text,
+  role text,
+  created_at timestamp default now()
+);
+
+-- INSIGHTS
+create table public.insights (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid,
+  content text,
+  type text,
+  created_at timestamp default now()
+);
+
+-- RLS (SEGURANÇA)
+alter table transactions enable row level security;
+create policy "Users can manage own transactions"
+on transactions for all
+using (auth.uid() = user_id);
+
+alter table goals enable row level security;
+create policy "Users can manage own goals"
+on goals for all
+using (auth.uid() = user_id);
+```
+
+---
+
+# 🔌 2. WORKFLOW N8N (IMPORTÁVEL)
+
+Esse é o **coração do app**.
+
+👉 Copie e importe no n8n:
+
+```json
+{
+  "nodes": [
+    {
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "parameters": {
+        "path": "finance-chat",
+        "httpMethod": "POST"
+      }
+    },
+    {
+      "name": "OpenAI - Interpretar",
+      "type": "n8n-nodes-base.openai",
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "prompt": "Você é um assistente financeiro.\nExtraia JSON da mensagem:\n\nMensagem: {{$json[\"message\"]}}\n\nRetorne:\n{\n\"type\": \"expense | goal | question\",\n\"amount\": number,\n\"category\": \"string\",\n\"description\": \"string\"\n}"
+      }
+    },
+    {
+      "name": "IF Tipo",
+      "type": "n8n-nodes-base.if",
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"type\"]}}",
+              "operation": "equal",
+              "value2": "expense"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Salvar Transação",
+      "type": "n8n-nodes-base.supabase",
+      "parameters": {
+        "operation": "insert",
+        "table": "transactions",
+        "data": {
+          "amount": "={{$json[\"amount\"]}}",
+          "category": "={{$json[\"category\"]}}",
+          "description": "={{$json[\"description\"]}}"
+        }
+      }
+    },
+    {
+      "name": "Resposta",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "parameters": {
+        "responseBody": "Gasto registrado com sucesso 💸"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Interpretar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI - Interpretar": {
+      "main": [
+        [
+          {
+            "node": "IF Tipo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Tipo": {
+      "main": [
+        [
+          {
+            "node": "Salvar Transação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salvar Transação": {
+      "main": [
+        [
+          {
+            "node": "Resposta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
+```
+
+---
+
+# 🧠 3. PROMPT PROFISSIONAL (IA)
+
+Use isso no node OpenAI (melhora MUITO a precisão):
+
+```txt
+Você é um assistente financeiro inteligente.
+
+Sua função é interpretar mensagens de usuários e converter em JSON estruturado.
+
+Regras:
+- Detecte intenção: expense, goal ou question
+- Extraia valor numérico
+- Classifique categoria automaticamente
+- Seja preciso e objetivo
+
+Categorias possíveis:
+alimentação, transporte, moradia, lazer, saúde, outros
+
+Retorne apenas JSON:
+
+{
+"type": "",
+"amount": 0,
+"category": "",
+"description": ""
+}
+
+Mensagem do usuário:
+{{input}}
+```
+
+---
+
+# 🔐 4. INTEGRAÇÃO FRONT (LOVABLE → N8N)
+
+### Endpoint:
+
+```
+POST https://SEU-N8N/webhook/finance-chat
+```
+
+### Body:
+
+```json
+{
+  "user_id": "uuid",
+  "message": "gastei 50 no mercado"
+}
+```
+
+---
+
+# 💰 5. COBRANÇA (ASAAS - PIX RECORRENTE)
+
+Você já queria isso — então aqui vai direto:
+
+## Fluxo:
+
+Lovable → n8n → Asaas API
+
+### Criar cliente:
+
+```
+POST /customers
+```
+
+### Criar assinatura:
+
+```
+POST /subscriptions
+```
+
+Plano:
+
+* mensal
+* valor fixo
+
+---
+
+# ⚡ 6. AUTOMAÇÃO EXTRA (OURO)
+
+### 🔁 CRON no n8n:
+
+* Todo dia 20h
+
+Node OpenAI:
+
+```
+Gere um resumo financeiro simples baseado nas transações do dia.
+```
+
+Resultado:
+
+* insight automático diário
+
+---
+
+# 🧠 7. COMO ISSO VIRA UM SaaS REAL
+
+Você já tem:
+
+✅ Backend
+✅ IA
+✅ Banco
+✅ Automação
+✅ Base de monetização
+
+Falta só:
+
+* UI (Lovable)
+* Distribuição
+
+---
+
+# 🔥 Próximo nível (se quiser ir ainda mais fundo)
+
+Posso montar pra você:
+
+👉 Dashboard estilo Power BI (com Supabase + charts)
+👉 Score financeiro do usuário
+👉 Previsão de gastos com IA
+👉 Sistema de recomendação automática (nível Nubank)
+👉 Integração com Open Finance (futuro)
+
+---
+
+Se quiser evoluir isso:
+
+👉 fala: **“quero versão SaaS premium”**
+
+Aí eu te entrego um sistema pronto pra vender.
