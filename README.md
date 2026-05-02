@@ -2,6 +2,232 @@
 
 Aprenda a **criar soluções com IA** de forma criativa, guiando ferramentas como o **Copilot** e o **Lovable** com uma comunicação simples e natural. O foco é desenvolver o conceito de um **App de Organização de Finanças Pessoais**, mas, acima de tudo, aprender o **jeito Vibe de programar com IA**.
 
+O que eu fiz para ter a minha versão:
+
+Criei o  **repositório no GitHub** (fazendo o **fork** do original).  
+No README do seu repositório, inclua:
+
+- Seu **prompt final** (PRD);  
+
+# 💡 PROJETO: App de Finanças Pessoais Conversacional
+
+## 🎯 Objetivo
+Criar um aplicativo de controle financeiro simples, baseado em chat, onde o usuário registra gastos em linguagem natural e recebe insights automáticos.
+
+---
+
+## 🧠 Problema
+Apps financeiros atuais falham porque:
+- Exigem entrada manual excessiva
+- São complexos para iniciantes
+- Não oferecem orientação personalizada
+
+---
+
+## 👤 Público-Alvo
+- Iniciantes em finanças pessoais
+- Pessoas que evitam planilhas
+- Usuários que preferem simplicidade
+
+---
+
+## 🚀 Proposta de Valor
+“Controle financeiro tão simples quanto conversar.”
+
+---
+
+## 🔑 FUNCIONALIDADES PRINCIPAIS (MVP)
+
+1. Registro de gastos via linguagem natural  
+Ex: “Gastei 30 reais com Uber”
+
+2. Classificação automática  
+Sistema interpreta:
+- valor
+- categoria
+- data
+
+3. Metas financeiras  
+Ex: “Quero guardar 500 reais”
+
+4. Agente Financeiro (IA)
+- Dá dicas simples
+- Sugere economia
+- Gera alertas
+
+5. Relatórios simples
+- Resumo semanal/mensal
+- Insights automáticos
+
+---
+
+## 🤖 AGENTE FINANCEIRO (COMPORTAMENTO)
+
+### Personalidade
+- Simples
+- Educativo
+- Motivador
+- Não julgador
+
+### Tom de voz
+- Conversa natural (estilo WhatsApp)
+- Frases curtas
+- Direto ao ponto
+
+### Exemplos
+- “Você gastou bastante com comida essa semana. Quer tentar reduzir?”
+- “Se economizar 10 reais por dia, você atinge sua meta.”
+
+---
+
+## 📱 FLUXO DO APP (BASEADO EM CHAT)
+
+### 1. Onboarding
+- Pergunta objetivo financeiro
+- Ex: “Quer economizar ou só organizar?”
+
+---
+
+### 2. Tela Principal (Chat)
+- Input de texto
+- Histórico de conversa
+- Sugestões rápidas
+
+---
+
+### 3. Interpretação de Mensagem
+Usuário: “Gastei 50 no mercado”
+
+Sistema:
+- Detecta valor, categoria
+- Retorna confirmação:
+  “Registrar 50 reais em alimentação?”
+
+---
+
+### 4. Metas
+- Criar meta
+- Acompanhar progresso
+
+---
+
+### 5. Relatórios
+- Resumo automático:
+  “Você gastou 1200 este mês. 40% foi alimentação.”
+
+---
+
+## ⚙️ REGRAS IMPORTANTES
+
+- Priorizar simplicidade (evitar telas complexas)
+- Tudo deve poder ser feito via chat
+- Sempre confirmar ações importantes
+- Usar linguagem natural em toda UI
+
+---
+
+## 🧪 VALIDAÇÃO DO MVP
+
+### Hipóteses
+- Chat é mais fácil que formulário
+- Simplicidade aumenta uso contínuo
+
+### Métricas
+- Retenção (7 dias)
+- Nº de registros por usuário
+- Criação de metas
+- Engajamento com dicas
+
+### Teste inicial
+- 20 a 50 usuários
+- Feedback direto
+- Iteração rápida
+
+---
+
+# ⚡ PROMPTS OTIMIZADOS PARA LOVABLE
+
+## 🔹 Prompt 1 (PRINCIPAL — USE PRIMEIRO)
+Crie o app completo com base neste PRD.
+Gere:
+- Estrutura de telas
+- Componentes principais
+- Fluxo de navegação
+- Experiência de chat detalhada
+
+Priorize simplicidade e UX conversacional.
+
+---
+
+## 🔹 Prompt 2 (AGENTE)
+Defina o comportamento completo do agente financeiro.
+Inclua:
+- Personalidade
+- Tom de voz
+- 10 exemplos de diálogo real
+
+---
+
+## 🔹 Prompt 3 (UX)
+Otimize a experiência do usuário.
+Sugira:
+- Melhorias no fluxo
+- Redução de fricção
+- Microinterações
+
+---
+
+## 🔹 Prompt 4 (MVP RESUMIDO)
+Resuma o MVP em:
+- 5 funcionalidades essenciais
+- Stack recomendada
+- Forma mais rápida de validar
+
+---
+
+## 🔹 Prompt 5 (VALIDAÇÃO)
+Crie um plano prático de validação com:
+- Testes reais
+- Métricas claras
+- Critérios de sucesso
+
+
+- Prints ou pequenos vídeos das interações com a IA;  
+- Um resumo do que o seu **App de Finanças Pessoais** faz;
+  
+- Uma breve **reflexão sobre o processo**:
+  - O que funcionou bem?
+    🧠 O que mudou (e por que isso é melhor)
+    Aqui vai o ponto importante — direto:
+    Transformei o PRD em prompt executável (Lovable entende melhor assim)
+    Reduzi ambiguidade → respostas mais assertivas
+    Estruturei ordem ideal das 5 interações
+    Foquei em:
+    UX conversacional (core do produto)
+    rapidez de MVP (seu objetivo real)
+    clareza para IA (menos “interpretação”, mais “execução”)
+   ⚡ Dica estratégica (isso vai te economizar MUITO tempo)
+   Na prática, use assim:
+   Cole TODO o PRD + Prompt 1
+   Depois vá refinando com os outros prompts
+   Se  fizer isso certo, você consegue:
+   Protótipo funcional em 1–2 interações
+   Ajustes nas outras 3
+  - O que não funcionou como o esperado?
+    Como em todas as vezes que faço um desafio gosto de caminhar por caminhos ainda não trilhados, usei o chatgpt ao inves do copilot, vou fazer o copilot depois para fazer um comparativo, pois o chatgpt que uso é o gratuito, que estaria assim mais     acessivel  a pessoas mais leigas. 
+  - O que aprendeu sobre conversar com IAs?
+    Que o que eu consigo depende de ser claro, colocar contexto, muitas vezes tenho de ser breve, principalmente quando uso de forma gratuita, tem algumas limitaçoes, as vezes tenho de fazer mais iteraçoes para ter sucesso.
+
+> [!TIP]
+> Publiquei o meu repositório e compartilhei o link na plataforma da DIO! Minha entrega é a prova de que agora domino o raciocínio de Vibe Coding, mesmo sem escrever uma única linha de código.
+
+## 💬 Conclusão
+
+Vibe Coding é sobre clareza, curiosidade e criatividade, não sobre perfeição técnica. O verdadeiro objetivo aqui é aprender a pensar junto com a IA, transformando ideias em conceitos reais e enxergando a tecnologia como uma extensão do seu raciocínio criativo. Cada interação é um experimento, quanto mais clara for sua intenção, mais surpreendente será o resultado.
+Vibe Coding permitiu que pessoas de "produto" iniciem nesta aventura de codificar e fazer MVP de forma mais simples e prática.
+
+Versão antiga do readme :
+
 ## ✨ O que é Vibe Coding
 
 **Vibe Coding** é uma forma leve e criativa de desenvolver com IA, baseada em **conversas naturais e bem estruturadas**. Você não precisa escrever código linha por linha. Em vez disso, aprende a **guiar a IA** descrevendo suas ideias de forma clara, com **intenção e contexto**. Em outras palavras:
