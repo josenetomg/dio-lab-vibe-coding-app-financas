@@ -191,11 +191,16 @@ Crie um plano prático de validação com:
 - Métricas claras
 - Critérios de sucesso
 
-- Prints ou pequenos vídeos das interações com a IA;
+## 🎯  Prints ou pequenos vídeos das interações com a IA
+ - Tela Inicio
 <img width="675" height="527" alt="image" src="https://github.com/user-attachments/assets/1e066c29-42aa-4951-860c-b2a11237d211" />
+ - Tela 
 <img width="688" height="546" alt="image" src="https://github.com/user-attachments/assets/9b0bb97c-37aa-4b53-9106-a549fed1ba2b" />
+ - Tela
 <img width="672" height="546" alt="image" src="https://github.com/user-attachments/assets/f7bda9c4-478e-4d1a-a778-95a17f8c315e" />
+ - Tela
 <img width="686" height="569" alt="image" src="https://github.com/user-attachments/assets/35d3556b-8346-4c1a-bcdb-7a9434472a2e" />
+
 Melhorias no comportamento do agente, que não esta rodando uma ia Real - sua parser PT-BR Local.
 A IA entrará como um plus na versao paga !
 
