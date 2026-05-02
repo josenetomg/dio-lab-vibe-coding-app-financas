@@ -208,25 +208,26 @@ Mapa de respostas por intenção alinhado ao parser que já existe em src/lib/pa
 
 - Uma breve **reflexão sobre o processo**:
   - O que funcionou bem?
-    🧠 O que mudou (e por que isso é melhor)
-    Aqui vai o ponto importante — direto:
-    Transformei o PRD em prompt executável (Lovable entende melhor assim)
-    Reduzi ambiguidade → respostas mais assertivas
-    Estruturei ordem ideal das 5 interações
-    Foquei em:
+## 🧠 O que mudou (e por que isso é melhor)    Aqui vai o ponto importante — direto:
+    - Transformei o PRD em prompt executável (Lovable entende melhor assim)
+    - Reduzi ambiguidade → respostas mais assertivas
+    - Estruturei ordem ideal das 5 interações
+## ⚡ Foquei em:
     UX conversacional (core do produto)
     rapidez de MVP (seu objetivo real)
     clareza para IA (menos “interpretação”, mais “execução”)
-   ⚡ Dica estratégica (isso vai te economizar MUITO tempo)
-   Na prática, use assim:
+ ## ⚡ Dica estratégica (isso vai te economizar MUITO tempo)
+>[!TIP]  Na prática, use assim:
    -  Cole TODO o PRD + Prompt 1
    -  Depois vá refinando com os outros prompts
    Se  fizer isso certo, você consegue:
    -  Protótipo funcional em 1–2 interações
    -  Ajustes nas outras 3
-   O que não funcionou como o esperado?
-    Como em todas as vezes que faço um desafio gosto de caminhar por caminhos ainda não trilhados, usei o chatgpt ao inves do copilot, vou fazer o copilot depois para fazer um comparativo, pois o chatgpt que uso é o gratuito, que estaria assim mais          acessivel  a pessoas mais leigas.
-   -  Consegui rodar o prompt #1 que me deu um app finalizado , e rodei o prompt #2 que me deu um tom mais personalizado, ao rodar o prompt #3 os creditos acabaram.
+     
+##⚡O que não funcionou como o esperado?
+   - Como em todas as vezes que faço um desafio gosto de caminhar por caminhos ainda não trilhados, usei o chatgpt ao inves do copilot, vou fazer o copilot depois para fazer um comparativo, pois o chatgpt que uso é o gratuito, que estaria assim mais          acessivel  a pessoas mais leigas.
+   - Consegui rodar o prompt #1 que me deu um app finalizado , e rodei o prompt #2 que me deu um tom mais personalizado, ao rodar o prompt #3 os creditos acabaram.
+     
    O que aprendeu sobre conversar com IAs?
    -  Que o que eu consigo depende de ser claro, colocar contexto, muitas vezes tenho de ser breve, principalmente quando uso de forma gratuita, tem algumas limitaçoes, as vezes tenho de fazer mais iteraçoes para ter sucesso.
 
