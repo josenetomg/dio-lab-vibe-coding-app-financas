@@ -252,7 +252,7 @@ A IA entrará como um plus na versao paga !
 
 Vibe Coding é sobre clareza, curiosidade e criatividade, não sobre perfeição técnica. O verdadeiro objetivo aqui é aprender a pensar junto com a IA, transformando ideias em conceitos reais e enxergando a tecnologia como uma extensão do seu raciocínio criativo. Cada interação é um experimento, quanto mais clara for sua intenção, mais surpreendente será o resultado.
 
-Vibe Coding permitiu que pessoas de "produto" iniciem nesta aventura de codificar e fazer MVP de forma mais simples e prática.
+Vibe Coding permitiu que pessoas de "produto" iniciem nesta aventura de codificar e fazer MVP de forma mais simples e prática. 
 
 ## 🧠 Proposta Indecente da IA
 
