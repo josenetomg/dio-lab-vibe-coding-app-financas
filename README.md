@@ -198,16 +198,14 @@ Crie um plano prático de validação com:
 <img width="686" height="569" alt="image" src="https://github.com/user-attachments/assets/35d3556b-8346-4c1a-bcdb-7a9434472a2e" />
 Melhorias no comportamento do agente, que não esta rodando uma ia Real - sua parser PT-BR Local.
 A IA entrará como um plus na versao paga !
-Vou começar perguntando algumas coisas-chave antes de construir, para garantir que o app fique alinhado com sua visão.
-O app já está implementado como MVP frontend (sem IA real — usa parser PT-BR local). Vou definir o comportamento do agente como documento de referência (markdown em /mnt/documents/) e também salvá-lo na memória do projeto para guiar futuras iterações de copy e tom no código.
-Resumo do que ficou definido:
+
+- Um resumo do que o seu **App de Finanças Pessoais** faz;
+  O app já está implementado como MVP frontend (sem IA real — usa parser PT-BR local). Vou definir o comportamento do agente como documento de referência (markdown em /mnt/documents/) e também salvá-lo na memória do projeto para guiar futuras iterações de copy e tom no código. Resumo do que ficou definido:
 Personalidade: Fin — amigo organizado (coach calmo + companheiro leve + assistente preciso), nunca julga, nunca dá palpite de investimento.
 Tom de voz: PT-BR informal-respeitoso, 1–3 frases, valores em R$ 0,00, máx 1–2 emojis funcionais, sem caixa alta.
 10 diálogos canônicos cobrindo: registro simples, valor com data, mensagem ambígua, categoria incerta, criar meta, relatório, insight proativo, erro, usuário ansioso, e pedido fora do escopo.
 Mapa de respostas por intenção alinhado ao parser que já existe em src/lib/parser.ts.
 
-- Um resumo do que o seu **App de Finanças Pessoais** faz;
-  
 - Uma breve **reflexão sobre o processo**:
   - O que funcionou bem?
     🧠 O que mudou (e por que isso é melhor)
@@ -221,16 +219,16 @@ Mapa de respostas por intenção alinhado ao parser que já existe em src/lib/pa
     clareza para IA (menos “interpretação”, mais “execução”)
    ⚡ Dica estratégica (isso vai te economizar MUITO tempo)
    Na prática, use assim:
-   Cole TODO o PRD + Prompt 1
-   Depois vá refinando com os outros prompts
+   -  Cole TODO o PRD + Prompt 1
+   -  Depois vá refinando com os outros prompts
    Se  fizer isso certo, você consegue:
-   Protótipo funcional em 1–2 interações
-   Ajustes nas outras 3
-  - O que não funcionou como o esperado?
-    Como em todas as vezes que faço um desafio gosto de caminhar por caminhos ainda não trilhados, usei o chatgpt ao inves do copilot, vou fazer o copilot depois para fazer um comparativo, pois o chatgpt que uso é o gratuito, que estaria assim mais     acessivel  a pessoas mais leigas.
-    Consegui rodar o prompt #1 que me deu um app finalizado , e rodei o prompt #2 que me deu um tom mais personalizado, ao rodar o prompt #3 os creditos acabaram.
-  - O que aprendeu sobre conversar com IAs?
-    Que o que eu consigo depende de ser claro, colocar contexto, muitas vezes tenho de ser breve, principalmente quando uso de forma gratuita, tem algumas limitaçoes, as vezes tenho de fazer mais iteraçoes para ter sucesso.
+   -  Protótipo funcional em 1–2 interações
+   -  Ajustes nas outras 3
+   O que não funcionou como o esperado?
+    Como em todas as vezes que faço um desafio gosto de caminhar por caminhos ainda não trilhados, usei o chatgpt ao inves do copilot, vou fazer o copilot depois para fazer um comparativo, pois o chatgpt que uso é o gratuito, que estaria assim mais          acessivel  a pessoas mais leigas.
+   -  Consegui rodar o prompt #1 que me deu um app finalizado , e rodei o prompt #2 que me deu um tom mais personalizado, ao rodar o prompt #3 os creditos acabaram.
+   O que aprendeu sobre conversar com IAs?
+   -  Que o que eu consigo depende de ser claro, colocar contexto, muitas vezes tenho de ser breve, principalmente quando uso de forma gratuita, tem algumas limitaçoes, as vezes tenho de fazer mais iteraçoes para ter sucesso.
 
 > [!TIP]
 > Publiquei o meu repositório e compartilhei o link na plataforma da DIO! Minha entrega é a prova de que agora domino o raciocínio de Vibe Coding, mesmo sem escrever uma única linha de código.
