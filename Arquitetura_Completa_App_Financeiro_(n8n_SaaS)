@@ -1,0 +1,292 @@
+# 🏗️ ARQUITETURA — APP FINANCEIRO CONVERSACIONAL
+
+## 🎯 Objetivo Técnico
+Construir um SaaS escalável de finanças pessoais com:
+- Interface conversacional
+- Automação via n8n
+- Backend simples e barato
+- Pronto para monetização
+
+---
+
+# 🧩 STACK RECOMENDADA (SIMPLES + ESCALÁVEL)
+
+## Frontend (Lovable)
+- Lovable (UI + lógica básica)
+- Chat interface (core do produto)
+
+---
+
+## Backend (BaaS)
+👉 RECOMENDADO: Supabase
+
+- Auth (login social/email)
+- Banco PostgreSQL
+- Realtime (opcional)
+- Storage (se necessário)
+
+Alternativa:
+- Firebase (mais simples, menos flexível)
+
+---
+
+## Automação (CÉREBRO)
+👉 n8n (ESSENCIAL)
+
+Responsável por:
+- Processar mensagens do usuário
+- Interpretar linguagem natural
+- Classificar gastos
+- Gerar respostas do agente financeiro
+- Disparar notificações
+
+---
+
+## IA (Camada Cognitiva)
+
+- OpenAI (GPT)
+ou
+- API compatível (mais barato depois)
+
+Usos:
+- NLP (interpretar gastos)
+- Geração de respostas
+- Insights financeiros
+
+---
+
+## Infraestrutura
+
+- Railway (deploy fácil do n8n)
+ou
+- VPS (Hostinger / DigitalOcean)
+
+---
+
+# 🗄️ MODELAGEM DO BANCO (SUPABASE)
+
+## Tabela: users
+- id (uuid)
+- email
+- created_at
+
+---
+
+## Tabela: transactions
+- id
+- user_id
+- amount
+- category
+- description
+- date
+- created_at
+
+---
+
+## Tabela: goals
+- id
+- user_id
+- title
+- target_amount
+- current_amount
+- deadline
+
+---
+
+## Tabela: messages
+- id
+- user_id
+- message
+- role (user / assistant)
+- created_at
+
+---
+
+## Tabela: insights
+- id
+- user_id
+- content
+- type (alert / suggestion)
+- created_at
+
+---
+
+# 🔌 APIs (CAMADA DE INTEGRAÇÃO)
+
+## 1. API de Entrada (Chat)
+
+POST /message
+
+Request:
+{
+  "user_id": "...",
+  "message": "Gastei 50 reais com mercado"
+}
+
+Fluxo:
+→ envia para n8n
+
+---
+
+## 2. API de Transações
+
+POST /transactions  
+GET /transactions  
+GET /transactions/summary  
+
+---
+
+## 3. API de Metas
+
+POST /goals  
+GET /goals  
+PATCH /goals  
+
+---
+
+## 4. API de Insights
+
+GET /insights  
+
+---
+
+# 🔁 FLUXO PRINCIPAL (n8n)
+
+## 🧠 Workflow: Processar Mensagem
+
+1. Webhook (entrada do Lovable)
+2. Node OpenAI:
+   - Extrai:
+     - valor
+     - categoria
+     - intenção
+3. IF Node:
+   → é gasto?
+   → é meta?
+   → é pergunta?
+
+---
+
+## 💰 Se for GASTO:
+
+4. Salvar no Supabase
+5. Gerar resposta:
+   “Registrado: R$50 em alimentação”
+
+---
+
+## 🎯 Se for META:
+
+4. Criar/atualizar meta
+5. Responder confirmação
+
+---
+
+## 💡 Se for PERGUNTA:
+
+4. Gerar resposta com IA
+
+---
+
+## 📊 Pós-processamento:
+
+6. Gerar insight:
+- “Você gastou muito essa semana”
+
+7. Salvar insight
+
+---
+
+## 📤 Retorno:
+8. Resposta volta para o app
+
+---
+
+# 🧠 PROMPT BASE (IA - CLASSIFICAÇÃO)
+
+Sistema:
+"Você é um assistente financeiro que interpreta mensagens e retorna JSON estruturado."
+
+Saída esperada:
+{
+  "type": "expense",
+  "amount": 50,
+  "category": "alimentação",
+  "description": "mercado"
+}
+
+---
+
+# ⚡ AUTOMAÇÕES EXTRAS (n8n)
+
+## 1. Resumo Diário
+Cron:
+- Todo dia 20h
+
+→ gera resumo:
+“Hoje você gastou R$120”
+
+---
+
+## 2. Alerta de Excesso
+Se:
+- gasto categoria > limite
+
+→ envia alerta
+
+---
+
+## 3. Progresso de Meta
+- Atualiza automaticamente
+
+---
+
+# 💰 MONETIZAÇÃO (PRONTO PRA SAAS)
+
+## Plano Free
+- Registro ilimitado
+- 1 meta
+
+## Plano Pago
+- Insights avançados
+- Metas ilimitadas
+- Previsão financeira
+
+Integração:
+- Stripe
+ou
+- Asaas (PIX recorrente 🇧🇷)
+
+---
+
+# 🔐 SEGURANÇA
+
+- Auth via Supabase
+- Row Level Security (RLS)
+- Dados por usuário isolados
+
+---
+
+# 🚀 ROADMAP (ESCALA)
+
+## Fase 1
+- MVP funcional (chat + registro)
+
+## Fase 2
+- Insights inteligentes
+
+## Fase 3
+- IA preditiva
+
+## Fase 4
+- Open Banking (futuro)
+
+---
+
+# 🔥 DIFERENCIAL
+
+Você não está criando:
+→ um app de finanças
+
+Você está criando:
+→ um **copiloto financeiro pessoal**
