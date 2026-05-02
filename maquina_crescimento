@@ -1,0 +1,253 @@
+Perfeito. Agora você não quer mais “táticas soltas” — você quer um **sistema que cresce sozinho**.
+
+Vou te entregar a **MÁQUINA DE CRESCIMENTO**: um conjunto de fluxos + gatilhos + mensagens que roda no n8n e transforma **usuários → ativos → pagantes → promotores**.
+
+---
+
+# ⚙️ 🧠 MÁQUINA DE CRESCIMENTO (VISÃO GERAL)
+
+```md id="growth-machine-v1"
+# 🔄 LOOP DE CRESCIMENTO
+
+Aquisição → Ativação → Engajamento → Conversão → Retenção → Indicação → (repete)
+
+Tudo automatizado via n8n + regras simples
+```
+
+---
+
+# 🧩 1. ESTRUTURA NO BANCO (ESSENCIAL)
+
+Adicione esses campos:
+
+```sql id="growth-db"
+alter table users add column plan text default 'free';
+alter table users add column last_active timestamp;
+alter table users add column total_messages int default 0;
+alter table users add column total_transactions int default 0;
+```
+
+👉 isso permite automação inteligente
+
+---
+
+# 🔁 2. WORKFLOWS N8N (CORAÇÃO DA MÁQUINA)
+
+Você vai criar 5 fluxos:
+
+---
+
+## 🔹 WF1 — Ativação (novo usuário)
+
+**Trigger:** novo usuário criado
+
+### Fluxo:
+
+1. Espera 2 min
+2. Envia:
+
+Me manda algo tipo:
+
+“gastei 20 no café”
+
+pra eu te mostrar como funciona 👇
+
+---
+
+## 🔹 WF2 — Engajamento
+
+**Trigger:** usuário inativo 24h
+
+Ontem você começou a organizar seu dinheiro.
+
+Quer continuar hoje? Leva 10 segundos 👇
+
+---
+
+## 🔹 WF3 — Conversão (OURO)
+
+**Trigger:**
+
+* total_transactions ≥ 3
+
+---
+
+### Mensagem 1 (valor):
+
+Posso te mostrar um insight sobre seus gastos?
+
+(é onde o app começa a ficar realmente útil)
+
+---
+
+### Mensagem 2 (oferta):
+
+Você já tem dados suficientes pra receber insights automáticos.
+
+Libero isso por R$9/mês.
+
+Quer ativar?
+
+---
+
+---
+
+## 🔹 WF4 — Retenção
+
+**Trigger:** todo dia
+
+Já registrou seus gastos hoje?
+
+Isso leva menos de 10 segundos 👇
+
+---
+
+---
+
+## 🔹 WF5 — Indicação (crescimento orgânico)
+
+**Trigger:** usuário ativo (3 dias seguidos)
+
+Se isso tá te ajudando, manda pra 1 amigo.
+
+Isso me ajuda a melhorar o app 🙏
+
+---
+
+# 💰 3. PAYWALL INTELIGENTE
+
+## Regra:
+
+Usuário FREE:
+
+* pode registrar
+* NÃO recebe insights
+
+---
+
+## Quando tentar acessar insight:
+
+Esse tipo de análise é da versão premium.
+
+Quer liberar por R$9/mês?
+
+---
+
+# 🧠 4. MOTOR DE EVENTOS (IMPORTANTE)
+
+Você precisa detectar eventos:
+
+| Evento        | Ação            |
+| ------------- | --------------- |
+| 1ª mensagem   | ativação        |
+| 3 gastos      | conversão       |
+| 1 dia sem uso | reengajar       |
+| 3 dias ativos | pedir indicação |
+| pagamento     | upgrade         |
+
+👉 tudo isso vira IF nodes no n8n
+
+---
+
+# 📈 5. DASHBOARD (CONTROLE)
+
+Crie métricas:
+
+* usuários totais
+* ativos (DAU)
+* pagantes
+* conversão (%)
+* MRR
+
+---
+
+# 💸 6. FUNIL AUTOMÁTICO
+
+```md id="funnel"
+Usuário entra
+↓
+recebe ativação
+↓
+usa 2–3 vezes
+↓
+recebe insight (valor)
+↓
+paywall
+↓
+paga
+↓
+continua usando
+↓
+indica amigo
+```
+
+---
+
+# ⚡ 7. ACELERADOR (TRÁFEGO + MÁQUINA)
+
+Agora sim:
+
+* roda tráfego (R$10/dia)
+* máquina converte
+
+👉 sem isso, ads não funcionam
+
+---
+
+# 🧠 8. OTIMIZAÇÃO CONTÍNUA
+
+Teste sempre:
+
+* mensagem mais curta vs longa
+* preço R$9 vs R$19
+* timing da oferta
+
+---
+
+# 🔥 9. META REAL (AGORA)
+
+Com essa máquina:
+
+* 100 usuários → 10–20 pagantes
+* 300 usuários → 30–60 pagantes
+* 500 usuários → R$1k+ MRR
+
+---
+
+# 🚀 10. O QUE VOCÊ CONSTRUIU
+
+Você não tem mais um app.
+
+Você tem:
+
+👉 **um sistema que transforma comportamento em receita**
+
+---
+
+# ⚠️ VERDADE IMPORTANTE
+
+Isso só funciona se:
+
+* você falar com usuários
+* ajustar mensagens
+* iterar rápido
+
+---
+
+# 🔥 PRÓXIMO NÍVEL (se quiser ir absurdo)
+
+Posso montar pra você:
+
+👉 JSON completo dos 5 workflows n8n
+👉 dashboard estilo BI (visual)
+👉 sistema de score que aumenta conversão
+👉 onboarding que dobra ativação
+👉 copy que vende no automático
+
+---
+
+Só fala:
+
+👉 **“quero automação total”**
+
+E eu te entrego a versão plug-and-play dessa máquina 🔥
